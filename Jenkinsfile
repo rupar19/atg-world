@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // https://github.com/rupar19/atg-world.git
+                // Checkout the repository
                 checkout scm
             }
         }
@@ -12,13 +12,11 @@ pipeline {
         stage('Build and Test') {
             steps {
                 script {
-                    // Set up a virtual environment and install dependencies
-                    sh 'python3 -m venv venv'
-                    sh 'source venv/bin/activate'
-                    sh 'pip install -r requirements.txt'
+                    // Install dependencies
+                    sh 'pip3 install -r requirements.txt'
 
                     // Run the Python unit test
-                    sh 'python test_atg_world.py'
+                    sh 'python3 test_atg_world.py'
                 }
             }
         }
